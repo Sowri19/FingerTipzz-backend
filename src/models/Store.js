@@ -1,11 +1,39 @@
-import mongoose from "mongoose";
+import { Model, DataTypes } from 'sequelize';
 
-const storeSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  description: { type: String },
-  owner: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
-  products: [{ type: mongoose.Schema.Types.ObjectId, ref: "Product" }],
-  createdAt: { type: Date, default: Date.now },
-});
+class Store extends Model {
+  static associate(models) {
+    Store.belongsTo(models.Vendor, { foreignKey: 'VendorID' });
+    Store.hasMany(models.Product, { foreignKey: 'StoreID' });
+  }
+}
 
-export default mongoose.model("Store", storeSchema);
+export default (sequelize) => {
+  Store.init(
+    {
+      StoreID: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+      },
+      VendorID: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      Name: {
+        type: DataTypes.STRING(100),
+        allowNull: false,
+      },
+      Description: {
+        type: DataTypes.TEXT,
+      },
+    },
+    {
+      sequelize,
+      modelName: 'Store',
+      tableName: 'Stores',
+      timestamps: true,
+    }
+  );
+
+  return Store;
+};
