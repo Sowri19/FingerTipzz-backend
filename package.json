@@ -1,0 +1,30 @@
+{
+  "name": "FingerTipzz-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": "git@github.com:Sowri19/FingerTipzz-backend.git",
+  "author": "Satya Sowri Sampath Korturti <98078922+Sowri19@users.noreply.github.com>",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.6.4",
+    "nodemailer": "^6.9.15",
+    "stripe": "^16.12.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.11.1",
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.7",
+    "prettier": "^3.3.3",
+    "supertest": "^7.0.0"
+  }
+}
