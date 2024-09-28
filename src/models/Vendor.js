@@ -3,7 +3,6 @@ import { Model, DataTypes } from 'sequelize';
 class Vendor extends Model {
   static associate(models) {
     Vendor.belongsTo(models.User, { foreignKey: 'UserID' });
-    Vendor.hasMany(models.Store, { foreignKey: 'VendorID' });
   }
 }
 
